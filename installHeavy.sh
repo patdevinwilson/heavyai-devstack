@@ -109,7 +109,7 @@ allowed-import-paths = ["/var/lib/heavyai/import"]
 allowed-export-paths = ["/"]
 idle-session-duration = 43200
 enable-logs-system-tables = true
-enable-executor-resource-mgr=0
+enable-executor-resource-mgr= true
 
 [web]
 port = 6273
@@ -180,6 +180,7 @@ cat >$NGINX_CONF_FILE <<nginxEnd
 events {}
 
 http {
+  client_max_body_size 10000M;
   map \$http_upgrade \$connection_upgrade {
     default upgrade;
     ''      close;
